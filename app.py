@@ -1,23 +1,3 @@
-## Objective
-
-# 1. Design the page top header - Movie Data Analysis
-# 2. Search option - person can search the movie (partial searches handling)
-# 3. Add filters
-#     Geenre
-#     Year
-#     Rating
-#     votes
-#     Language filter 
-
-# 4. Filters happened - show the dataframe (Table on screen)
-
-# 5. Vizualization - Selection Box 
-#     Top ten movies based on ratings.
-#     Top 10 Movies based on votes.
-#     Rating distribution.
-#     Top Genres by count.
-#     Votes vs Ratings.
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -62,10 +42,6 @@ language_filter = st.sidebar.multiselect("Select Language", df['Language'].uniqu
 if language_filter:
     df = df[df["Language"].isin(language_filter)]
 
-# ## Year Slider filter 
-# year_range = st.sidebar.slider("Select Year Range", int(df['Year'].min()), int(df['Year'].max()),(1950-2025))
-# df = df[df['Year'].between(*year_range)]
-
 ## Year Slider filter 
 year_range = st.sidebar.slider("Select Year Range", int(df['Year'].min()), int(df['Year'].max()), (1950,2025))
 df = df[df['Year'].between(*year_range)]
@@ -77,7 +53,6 @@ st.write(f"Found {len(df)} movies after filter")
 st.dataframe(df)
 
 ## Data Vizualization
-
 st.subheader('Vizualizations.. ')
 viz_selection = st.selectbox("Choose from given Analysis options",
                              ['Top 10 movies by Ratings',
